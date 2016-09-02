@@ -274,7 +274,7 @@ foreign import _readHTMLElement
   -> F HTMLElement
 
 readHTMLElement :: Foreign -> F HTMLElement
-readHTMLElement = _readHTMLElement (Left <<< TypeMismatch "HTMLElement") Right
+readHTMLElement = _readHTMLElement (\e -> Left (TypeMismatch ["HTMLElement"] e)) Right
 
 instance isForeignHTMLElement :: IsForeign HTMLElement where
   read = readHTMLElement
